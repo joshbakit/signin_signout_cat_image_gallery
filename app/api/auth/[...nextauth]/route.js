@@ -12,7 +12,7 @@ export const authOptions = {
 
       async authorize(credentials) {
         const { email, password } = credentials;
-
+console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
         try {
           await connectMongoDB();
           const user = await User.findOne({ email });
