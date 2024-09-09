@@ -18,7 +18,9 @@ const Login = () => {
 
     try {
       const res = await signIn('credentials', {
-        email, password, redirect: false,
+        email, password, redirect: false, 
+        callbackUrl: "https://cat-image-gallery.vercel.app/",
+        csrfToken: csrfToken, // Ensure this is the correct CSRF token
       });
       console.log("sing in:", res)
       if (res?.error) {
