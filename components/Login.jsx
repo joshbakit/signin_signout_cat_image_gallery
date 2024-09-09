@@ -18,16 +18,14 @@ const Login = () => {
 
     try {
       const res = await signIn('credentials', {
-        email, password, redirect: false, 
-        callbackUrl: "https://cat-image-gallery.vercel.app/",
-        csrfToken: csrfToken, // Ensure this is the correct CSRF token
+        email, password, redirect: false,
       });
       console.log("sing in:", res)
       if (res?.error) {
         setError("invalid credentials")
         return;
       }
-      router.push("/dashboard")
+      router.push("https://cat-image-gallery.vercel.app/dashboard")
     } catch (error) {
       console.log(error)
     }
