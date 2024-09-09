@@ -9,7 +9,6 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-  
     },
     password: {
       type: String,
@@ -17,7 +16,7 @@ const userSchema = new Schema(
     },
   },
   {
-    {timestamp: true,}
+    timestamps: true,
   }
 );
 

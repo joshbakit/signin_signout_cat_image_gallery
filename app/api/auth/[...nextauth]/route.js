@@ -12,10 +12,11 @@ export const authOptions = {
 
       async authorize(credentials) {
         const { email, password } = credentials;
-console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
+
         try {
           await connectMongoDB();
           const user = await User.findOne({ email });
+          console.log("User found:", user); // Debugging
 
           if (!user) {
             return null;
@@ -29,12 +30,11 @@ console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
 
           return user;
         } catch (error) {
-          console.log("error:", error);
+          console.log("Error: ", error);
         }
       },
     }),
   ],
-
   session: {
     strategy: "jwt",
   },
@@ -45,4 +45,6 @@ console.log("NEXTAUTH_SECRET:", process.env.NEXTAUTH_SECRET);
 };
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
+

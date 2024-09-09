@@ -16,7 +16,6 @@ export default function RegisterForm() {
   const router = useRouter();
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     if (!name || !email || !password || !retypePassword) {
       setError("all fields need complete")
@@ -34,7 +33,7 @@ export default function RegisterForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-      });
+      })
 
       const { user } = await resUserExist.json();
 

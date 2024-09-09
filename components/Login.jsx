@@ -18,13 +18,14 @@ const Login = () => {
 
     try {
       const res = await signIn('credentials', {
-        email, password, redirect: false
-      })
-      if (res.error) {
+        email, password, redirect: false,
+      });
+      console.log("sing in:", res)
+      if (res?.error) {
         setError("invalid credentials")
         return;
       }
-      router.replace("dashboard")
+      router.push("/dashboard")
     } catch (error) {
       console.log(error)
     }
@@ -34,7 +35,7 @@ const Login = () => {
     <div className="container flex flex-col items-center p-16 h-screen mx-auto ">
       <h1 className='text-5xl lg:text-7xl uppercase text-center font-bold'>Cute cat image</h1>
       <form onSubmit={handleSubmit} className="flex flex-col justify-start shadow-2xl max-w-md mt-8 rounded-lg py-8 px-20 gap-4 bg-slate-50"  >
-        <h1 className='text-lg font-bold'>Login to see cute cat image</h1>
+        <h1 className='text-lg font-bold text-center'>Login to see the cat</h1>
         <input
           onChange={(e) => { setEmail(e.target.value) }}
           type="email"
@@ -55,17 +56,7 @@ const Login = () => {
         <Link href='/signup'>
           Don't have an account? <span className="link-primary underline">Sign up</span>
         </Link>
-        {/* <div className="divider">or</div>
-          <div className="social-media gap-2">
-            <a className="link flex items-center text-lg">
-              <ImFacebook />
-              Continue to Facebook
-            </a>
-            <a className="link flex items-center text-lg">
-              <FcGoogle />
-              Continue to Google
-            </a>
-          </div> */}
+
       </form>
 
     </div>

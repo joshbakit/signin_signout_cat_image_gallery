@@ -4,7 +4,8 @@ import { useSession } from "next-auth/react"
 import Gallery from "./Gallery";
 
 export default function UserInfo() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  console.log("session:", session)
 
   return (
     <div>
@@ -36,12 +37,6 @@ export default function UserInfo() {
             </ul>
           </div>
         </div>
-      </div>
-
-      <div>
-
-
-
       </div>
       <Gallery />
     </div>

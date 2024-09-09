@@ -10,6 +10,8 @@ export async function POST(req) {
     await connectMongoDB();
     await User.create({ name, email, password: hashedPassword });
 
+    console.log(name, email, password );
+
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
