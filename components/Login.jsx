@@ -19,13 +19,14 @@ const Login = () => {
     try {
       const res = await signIn('credentials', {
         email, password, redirect: false,
+
       });
       console.log("sing in:", res)
       if (res?.error) {
         setError("invalid credentials")
         return;
       }
-      router.push("https://cat-image-gallery.vercel.app/dashboard")
+      router.push("/dashboard")
     } catch (error) {
       console.log(error)
     }
